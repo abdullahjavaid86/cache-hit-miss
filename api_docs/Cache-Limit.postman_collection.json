@@ -1,0 +1,54 @@
+{
+	"info": {
+		"_postman_id": "bf125f86-5864-4dcd-912e-4e1187cd5d97",
+		"name": "Cache-Limit",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "4541070"
+	},
+	"item": [
+		{
+			"name": "cache",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "JUMP-AUTH-TOKEN",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{baseUrl}}/cache/som1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "generate token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const {success, data: {token}} = pm.response.json()",
+							"",
+							"if(success){",
+							"    pm.environment.set(\"auth-token\", token);",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseUrl}}/auth/login"
+			},
+			"response": []
+		}
+	]
+}
