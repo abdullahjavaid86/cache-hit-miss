@@ -2,11 +2,15 @@
 
 ## Getting Started
 
+### Authentication: This app uses jwt for auth, the token will be expired in one hour by default, Can be set in .env.* file as TOKEN_EXPIRY, Takes argument like 1h, 1m , 1d (refer to jsonwebtoken docs)
+
 ### Note: Check if your node and yarn version is compatible with the app from package.json
 
+- `env.local` for development
+- `env.production` for production
 - Preferably install yarn globally by running `npm i -g yarn`
 - Run `yarn` or `yarn install`
-- Change the variables in config/env.local according to your environment
+- Change the variables in config/.env.* according to your environment
     - like MONGO_URI, or STD_TTL (cache time-to-live)
 - Finally, run `yarn start` to start the dev server
 
@@ -20,7 +24,7 @@ Postman collection can be found in api_docs folder
 
 # Cache limit
 
-To set cache max limit change `CACHE_MAX_KEYS` in you env.local file to your desired number, the default value is 10
+To set cache max limit change `CACHE_MAX_KEYS` in you .env.* file to your desired number, the default value is 10
 
 ---
 

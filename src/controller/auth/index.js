@@ -8,7 +8,7 @@ exports.userLogin = async (req, res) => {
             {user_id: uniqueId()},
             process.env.AUTH_TOKEN_KEY,
             {
-                expiresIn: "1h",
+                expiresIn: process.env.TOKEN_EXPIRY ?? '1h',
             }
         );
         res.status(200).send(successResponse({token}))
